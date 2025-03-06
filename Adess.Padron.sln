@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adess.Padron.API", "Adess.Padron.API\Adess.Padron.API.csproj", "{D50B3D46-5DFE-48FE-87BC-0B36FE31E4A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adess.Padron.Infrastructure", "Adess.Padron.Infrastructure\Adess.Padron.Infrastructure.csproj", "{1328A0EB-3C79-4515-8514-0E78C89522B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adess.Padron.Persistance", "Adess.Padron.Persistance\Adess.Padron.Persistance.csproj", "{F6C6DF19-3CA4-4868-9E70-C86EA9E2F868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adess.Padron.Domain", "Adess.Padron.Domain\Adess.Padron.Domain.csproj", "{6436D85B-5839-4B1D-842F-A091FDC50C57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adess.Padron.Application", "Adess.Padron.Application\Adess.Padron.Application.csproj", "{CA9C5B88-8D91-46CF-9037-2A1379F25B28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D50B3D46-5DFE-48FE-87BC-0B36FE31E4A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50B3D46-5DFE-48FE-87BC-0B36FE31E4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50B3D46-5DFE-48FE-87BC-0B36FE31E4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50B3D46-5DFE-48FE-87BC-0B36FE31E4A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1328A0EB-3C79-4515-8514-0E78C89522B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1328A0EB-3C79-4515-8514-0E78C89522B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1328A0EB-3C79-4515-8514-0E78C89522B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1328A0EB-3C79-4515-8514-0E78C89522B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C6DF19-3CA4-4868-9E70-C86EA9E2F868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C6DF19-3CA4-4868-9E70-C86EA9E2F868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C6DF19-3CA4-4868-9E70-C86EA9E2F868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C6DF19-3CA4-4868-9E70-C86EA9E2F868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6436D85B-5839-4B1D-842F-A091FDC50C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6436D85B-5839-4B1D-842F-A091FDC50C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6436D85B-5839-4B1D-842F-A091FDC50C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6436D85B-5839-4B1D-842F-A091FDC50C57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA9C5B88-8D91-46CF-9037-2A1379F25B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9C5B88-8D91-46CF-9037-2A1379F25B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9C5B88-8D91-46CF-9037-2A1379F25B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9C5B88-8D91-46CF-9037-2A1379F25B28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
