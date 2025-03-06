@@ -4,7 +4,8 @@ using Adess.Padron.Application.Implementations;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IPadronService, PadronService>((serviceImplementation) => new PadronService(new HttpClient()));
+builder.Services.AddScoped<IHttpClientService, HttpClientService>((serviceImplementation) => new HttpClientService(new HttpClient()));
+builder.Services.AddScoped<IPadronService, PadronService>();
 
 
 builder.Services.AddControllers();

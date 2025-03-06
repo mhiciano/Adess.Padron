@@ -2,38 +2,43 @@
 using Adess.Padron.Domain.Models;
 using System.Xml.Serialization;
 using System.Xml;
+using Microsoft.Extensions.Configuration;
 
 namespace Adess.Padron.Application.Implementations
 {
-    public class PadronService(HttpClient httpClient) : IPadronService
+    public class PadronService : IPadronService
     {
-        private readonly HttpClient _httpClient = httpClient;
 
-        private readonly string _baseUrl = "https://dataportal.jce.gob.do/idcons/IndividualDataHandler.aspx?ServiceID={0}&ID1={1}&ID2={2}&ID3={3}";
-        private readonly string _servicio = "cb0b316e-5094-44ab-b2ee-143a910a4496";
+        private readonly IConfiguration _configuration;
+        private readonly IHttpClientService _httpClient;
+
+        public PadronService(IConfiguration configuration, IHttpClientService httpClient)
+        {
+            _configuration = configuration;
+            _httpClient = httpClient;
+        }
+
+        private readonly string _pathUrl = "idcons/IndividualDataHandler.aspx?ServiceID={0}&ID1={1}&ID2={2}&ID3={3}";
 
         public async Task<Persona> GetPadronInfo(string cedula)
         {
             var persona = new Persona();
             try
             {
-                string munCed, seqCed, verCed;
+                string munCed = cedula.Substring(0, 3);
 
-                munCed = "001";
-                seqCed = "1780722";
-                verCed = "2";
+                string seqCed = cedula.Substring(3, 7);
 
-                string url = string.Format(_baseUrl, _servicio, munCed, seqCed, verCed);
+                string verCed = cedula.Substring(10, 1);
 
-                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                var url = BuildRequestUrl(munCed, seqCed, verCed);
 
-                request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2");
+                var header = new Dictionary<string, string>
+                {
+                    { "User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2" }
+                };
 
-                HttpResponseMessage response = await _httpClient.SendAsync(request);
-
-                response.EnsureSuccessStatusCode();
-
-                string xmlResponse = await response.Content.ReadAsStringAsync();
+                var xmlResponse = await _httpClient.GetAsync(url,HttpMethod.Get, header);
 
                 persona = DeserializeXml<Persona>(xmlResponse);
             }
@@ -43,6 +48,13 @@ namespace Adess.Padron.Application.Implementations
             }
 
             return persona;
+        }
+
+        private string BuildRequestUrl(string munCed, string seqCed, string verCed)
+        {
+            string baseUrl = _configuration["padron:baseUrl"];
+            string serviceId = _configuration["padron:service"];
+            return string.Format(baseUrl + _pathUrl, serviceId, munCed, seqCed, verCed);
         }
 
         private static T DeserializeXml<T>(string xml)
