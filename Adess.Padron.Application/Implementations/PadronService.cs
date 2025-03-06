@@ -10,6 +10,7 @@ namespace Adess.Padron.Application.Implementations
     {
 
         private readonly IConfiguration _configuration;
+
         private readonly IHttpClientService _httpClient;
 
         public PadronService(IConfiguration configuration, IHttpClientService httpClient)
@@ -20,18 +21,15 @@ namespace Adess.Padron.Application.Implementations
 
         private readonly string _pathUrl = "idcons/IndividualDataHandler.aspx?ServiceID={0}&ID1={1}&ID2={2}&ID3={3}";
 
-        public async Task<Persona> GetPadronInfo(string cedula)
+        public async Task<Persona> GetPadronInfo(string numCedula)
         {
             var persona = new Persona();
+
+            var cedula = new Cedula(numCedula);
+
             try
             {
-                string munCed = cedula.Substring(0, 3);
-
-                string seqCed = cedula.Substring(3, 7);
-
-                string verCed = cedula.Substring(10, 1);
-
-                var url = BuildRequestUrl(munCed, seqCed, verCed);
+                var url = BuildRequestUrl(cedula.MunCed, cedula.SeqCed, cedula.VerCed);
 
                 var header = new Dictionary<string, string>
                 {
