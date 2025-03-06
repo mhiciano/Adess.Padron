@@ -36,6 +36,8 @@ namespace Adess.Padron.Application.Implementations
                     { "User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2" }
                 };
 
+
+
                 var xmlResponse = await _httpClient.GetAsync(url,HttpMethod.Get, header);
 
                 persona = DeserializeXml<Persona>(xmlResponse);
