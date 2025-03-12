@@ -20,13 +20,6 @@ namespace Adess.Padron.API.Controllers
             _padronService = padronService;
         }
 
-        [HttpPost(Name = "GetPadronInfo")]
-        public async Task<IActionResult> GetPadronInfo(string cedula)
-        {
-            return Ok(await _padronService.GetPadronInfo(cedula));
-        }
-        
-
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {

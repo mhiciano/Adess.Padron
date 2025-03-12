@@ -1,14 +1,12 @@
-﻿using Adess.Padron.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Adess.Padron.Domain;
+using Adess.Padron.Domain.Models;
 
 namespace Adess.Padron.Application.Contracts
 {
     public interface IPadronService
     {
         Task<Persona> GetPadronInfo(string cedula);
+
+        Task<OperationResult<PadronResponse>> Procesar();
     }
 }
